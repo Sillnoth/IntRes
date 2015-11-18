@@ -8,7 +8,7 @@ import Data.Data;
  */
 public class AddNCommand extends Commands {
 
-    private 
+    private final static int NUMARG = 3;
     public AddNCommand(PrintWriter out) {
         super(out);
     }
@@ -35,6 +35,13 @@ public class AddNCommand extends Commands {
             out.println("ADDOK");
         else
             out.println(retour);
+        return true;
+    }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length < NUMARG)
+            return false;
         return true;
     }
 }

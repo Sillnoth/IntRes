@@ -8,7 +8,7 @@ import Data.Data;
  */
 public abstract class Commands {
     protected PrintWriter out;
-    protected int numArg;
+    protected static int NUMARG;
 
     Commands(PrintWriter out) {
         this.out = out;

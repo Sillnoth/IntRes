@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class AddSCommand extends Commands {
 
+    private final static int NUMARG = 3;
     public AddSCommand(PrintWriter out) {
         super(out);
     }
@@ -33,4 +34,12 @@ public class AddSCommand extends Commands {
             out.println(retour);
         return true;
     }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length < NUMARG)
+            return false;
+        return true;
+    }
+
 }

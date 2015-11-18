@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class RemoveSCommand extends Commands {
 
+    private final static int NUMARG = 2;
     public RemoveSCommand(PrintWriter out) {
         super(out);
     }
@@ -20,6 +21,13 @@ public class RemoveSCommand extends Commands {
             data.removeSurname(input[1]);
             out.println("REMOVEOK");
         }
+        return true;
+    }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length != NUMARG)
+            return false;
         return true;
     }
 }

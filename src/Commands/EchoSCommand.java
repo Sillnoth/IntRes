@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class EchoSCommand extends Commands {
 
+    private final static int NUMARG = 2;
     public EchoSCommand(PrintWriter out) {
         super(out);
     }
@@ -25,6 +26,13 @@ public class EchoSCommand extends Commands {
         }
         else
             out.println("NAME NOT FOUND");
+        return true;
+    }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length != NUMARG)
+            return false;
         return true;
     }
 }

@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class EchoNCommand extends Commands {
 
+    private final static int NUMARG = 2;
     public EchoNCommand(PrintWriter out) {
         super(out);
     }
@@ -18,6 +19,13 @@ public class EchoNCommand extends Commands {
             out.println(data.getName(input[1]));
         else
             out.println("SURNAME NOT FOUND");
+        return true;
+    }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length != NUMARG)
+            return false;
         return true;
     }
 }

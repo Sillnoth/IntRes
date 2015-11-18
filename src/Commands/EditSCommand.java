@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class EditSCommand extends Commands {
 
+    private final static int NUMARG = 3;
     public EditSCommand(PrintWriter out) {
         super(out);
     }
@@ -24,4 +25,13 @@ public class EditSCommand extends Commands {
         }
         return true;
     }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length != NUMARG)
+            return false;
+        return true;
+    }
+
+
 }

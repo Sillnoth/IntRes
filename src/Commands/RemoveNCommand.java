@@ -8,6 +8,7 @@ import Data.Data;
  */
 public class RemoveNCommand extends Commands {
 
+    private final static int NUMARG = 2;
     public RemoveNCommand(PrintWriter out) {
         super(out);
     }
@@ -22,5 +23,12 @@ public class RemoveNCommand extends Commands {
         }
         return true;
 
+    }
+
+    @Override
+    public boolean valid(String[] input) {
+        if(input.length != NUMARG)
+            return false;
+        return true;
     }
 }
