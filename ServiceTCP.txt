@@ -1,0 +1,201 @@
+Description du protocole d'application
+
+Le port utilisé sera 1337
+
+1) Deconnexion du serveur 
+
+ +---------+-----------+
+ | client  |  serveur  | 
+ +---------+-----------+
+ |"EXIT\n" | "EXITOK\n"|
+ +---------+-----------+
+
+
+2) Ajout d'un nom et d'un ou plusieurs surnom(s) associés
+ - si le nom n'est pas présent dans le serveur
+ +----------------------------------+-----------+
+ |	       client		    |  serveur  |
+ +----------------------------------+-----------+
+ | "ADDN;Nom;Surnom1;...;SurnomN\n" | "ADDOK\n" |
+ +----------------------------------+-----------+
+
+
+ - si le nom existe déjà sur le serveur
+ +----------------------------------+--------------------------+
+ |		client		    |        serveur           |
+ +----------------------------------+--------------------------+
+ | "ADDN;Nom;Surnom1;...;SurnomN\n" |  "ALRDYEX NAME : Nom\n"  |
+ +----------------------------------+--------------------------+
+
+ - si un surnom existe déjà sur le serveur
+ +----------------------------------+--------------------------------+
+ |		client		    |            serveur             |
+ +----------------------------------+--------------------------------+
+ | "ADDN;Nom;Surnom1;...;SurnomN\n" |  "ALRDYEX SURNAME : Surnom\n"  |
+ +----------------------------------+--------------------------------+
+
+
+3) Ajout d'un surnom ou plusieurs à un nom déjà existant
+
+ - si le nom n'existe pas
+
+ +----------------------------------+-----------+
+ |	         client             |  serveur  |
+ +----------------------------------+-----------+
+ | "ADDS;Nom;Surnom1;...;SurnomN\n" | "ADDOK\n" |
+ +----------------------------------+-----------+
+
+ - si le surnom n'existe pas
+ +----------------------------------+-----------+
+ |	         client             |  serveur  |
+ +----------------------------------+-----------+
+ | "ADDS;Nom;Surnom1;...;SurnomN\n" | "ADDOK\n" |
+ +----------------------------------+-----------+
+
+ - s'il existe²
+ +----------------------------------+----------------------+
+ |	         client             |        serveur       |
+ +----------------------------------+----------------------+
+ | "ADDS;Nom;Surnom1;...;SurnomN\n" | "ALRDYEX : Surnom\n" |
+ +----------------------------------+----------------------+
+
+
+4) affichage d'un nom associé à un surnom
+
+ - si le surnom existe
+ +------------------+---------+
+ |	client      | serveur |
+ +------------------+---------+
+ | "ECHON;Surnom\n" | "Nom\n" | 
+ +------------------+---------+
+
+ - si le surnom n'existe pas
+ +------------------+-----------------------+
+ |	  client    |	     serveur	    |
+ +------------------+-----------------------+
+ | "ECHON;Surnom\n" | "SURNAME NOT FOUND\n" |
+ +------------------+-----------------------+
+
+
+5) affichage tous les surnoms associés à un nom
+
+ - si le nom existe
+ +---------------+-------------------------+
+ |	client	 |	   serveur	   |
+ +---------------+-------------------------+
+ | "ECHOS;Nom\n" | "Surnom1;...;SurnomN\n" |
+ +---------------+-------------------------+
+
+ - s'il n'existe pas
+ +---------------+--------------------+
+ |	client	 |	serveur	      |
+ +---------------+--------------------+
+ | "ECHOS;Nom\n" | "NAME NOT FOUND\n" |
+ +---------------+--------------------+
+
+ - s'il ne possède pas de surnom
+ +---------------+------------------------------+
+ |	client	 |	serveur	                |
+ +---------------+------------------------------+
+ | "ECHOS;Nom\n" | "NO SURNAME FOR THIS NAME\n" |
+ +---------------+------------------------------+
+
+6) modification d'un nom
+ - si l'ancien nom existe ET que le nouveau nom n'existe pas
+ +--------------------------------+------------+
+ |		client		  |  serveur   |
+ +--------------------------------+------------+
+ | "EDITN;AncienNom;NouveauNom\n" | "EDITOK\n" |
+ +--------------------------------+------------+
+
+ - si l'ancien nom existe ET que le nouveau nom existe
+ +--------------------------------+-------------------------------+
+ |		client		  |            serveur            |
+ +--------------------------------+-------------------------------+
+ | "EDITN;AncienNom;NouveauNom\n" | "ALRDYEX NAME : NouveauNom\n" |
+ +--------------------------------+-------------------------------+
+
+ d- si l'ancien nom n'existe pas
+ +--------------------------------+--------------------+
+ |		client		  |       serveur      |
+ +--------------------------------+--------------------+
+ | "EDITN;AncienNom;NouveauNom\n" | "NAME NOT FOUND\n" |
+ +--------------------------------+--------------------+
+
+
+7) modification d'un surnom
+ - si l'ancien surnom existe ET que le nouveau surnom n'existe pas
+ +--------------------------------------+------------+
+ |		  client		|  serveur   |
+ +--------------------------------------+------------+
+ | "EDITS;AncienSurnom;NouveauSurnom\n" | "EDITOK\n" |
+ +--------------------------------------+------------+
+
+ - si l'ancien surnom existe ET que le nouveau surnom existe
+ +--------------------------------------+-------------------------------------+
+ |		   client		|   	        serveur               |
+ +--------------------------------------+-------------------------------------+
+ | "EDITS;AncienSurnom;NouveauSurnom\n" | "ALRDYEX SURNAME : NouveauSurnom\n" |
+ +--------------------------------------+-------------------------------------+
+
+ - si l'ancien surnom n'existe pas
+ +--------------------------------------+-----------------------+
+ |		   client		|   	 serveur        |
+ +--------------------------------------+-----------------------+
+ | "EDITS;AncienSurnom;NouveauSurnom\n" | "SURNAME NOT FOUND\n" |
+ +--------------------------------------+-----------------------+
+
+
+8) suppression d'un nom
+ - si le nom existe
+ +----------------+--------------+
+ |	client    |    serveur   |
+ +----------------+--------------+
+ | "REMOVEN;Nom\n" | "REMOVEOK\n" |
+ +----------------+--------------+
+
+ - s'il n'existe pas
+ +----------------+--------------------+
+ |	client    |       serveur      |
+ +----------------+--------------------+
+ | "REMOVEN;Nom\n" | "NAME NOT FOUND\n" |
+ +----------------+--------------------+
+
+
+9) suppression d'un surnom
+ - si le surnom existe
+ +-------------------+--------------+
+ |	client       |    serveur   |
+ +-------------------+--------------+
+ | "REMOVES;Surnom\n" | "REMOVEOK\n" |
+ +-------------------+--------------+
+
+ - s'il n'existe pas
+ +-------------------+-----------------------+
+ |	 client      |        serveur        |
+ +-------------------+-----------------------+
+ | "REMOVES;Surnom\n" | "SURNAME NOT FOUND\n" |
+ +-------------------+-----------------------+
+
+ 10) commande inconnue 
+
+ +-------------------+---------------------------+
+ |	 client    	  |        serveur        |
+ +-------------------+---------------------------+
+ | "X COMMAND" | "X COMMAND : Unknown command\n" |
+ +-------------------+---------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
