@@ -29,6 +29,6 @@ public class EchoSCommand extends Commands {
 
     @Override
     public boolean valid(String[] input) {
-        return input.length != NUMARG;
+        return input.length == NUMARG;
     }
 }
