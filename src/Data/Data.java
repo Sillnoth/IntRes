@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Data {
-    private List<String> nameList = new ArrayList<>();
-    private List<String> surnameList = new ArrayList<>();
-    private Map<String,List<String>> surnameLink = new HashMap<>();
+    volatile private List<String> nameList = new ArrayList<>();
+    volatile private List<String> surnameList = new ArrayList<>();
+    volatile private Map<String,List<String>> surnameLink = new HashMap<>();
 
     public void removeSurname(String surname) {
         surnameList.remove(surname);

@@ -13,8 +13,9 @@ public class Server {
 	
 	public static void main(String[] args) {
 		int portNumber = Integer.parseInt(args[0]);
+		Data data = new Data();
 		
-		try ( 
+		try (
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
 		    Socket clientSocket = serverSocket.accept();
 		    PrintWriter out =
@@ -24,7 +25,6 @@ public class Server {
 		) {			
 			String inputLine;
 			CommandsInterpretor interpretor = new CommandsInterpretor(out);
-			Data data = new Data();
 			boolean fin = true;
             while (fin && (inputLine = in.readLine()) != null) {
 				String[] input = inputLine.split(";");
