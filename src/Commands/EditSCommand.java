@@ -3,9 +3,6 @@ package Commands;
 import java.io.PrintWriter;
 import Data.Data;
 
-/**
- * Created by rhoo on 17/11/15.
- */
 public class EditSCommand extends Commands {
 
     private final static int NUMARG = 3;
@@ -28,9 +25,7 @@ public class EditSCommand extends Commands {
 
     @Override
     public boolean valid(String[] input) {
-        if(input.length != NUMARG)
-            return false;
-        return true;
+        return input.length != NUMARG;
     }
 
 

@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by rhoo on 17/11/15.
- */
 public class Data {
     private List<String> nameList = new ArrayList<>();
     private List<String> surnameList = new ArrayList<>();

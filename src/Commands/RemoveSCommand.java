@@ -3,9 +3,6 @@ package Commands;
 import java.io.PrintWriter;
 import Data.Data;
 
-/**
- * Created by rhoo on 17/11/15.
- */
 public class RemoveSCommand extends Commands {
 
     private final static int NUMARG = 2;
@@ -26,8 +23,6 @@ public class RemoveSCommand extends Commands {
 
     @Override
     public boolean valid(String[] input) {
-        if(input.length != NUMARG)
-            return false;
-        return true;
+        return input.length != NUMARG;
     }
 }
