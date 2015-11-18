@@ -27,7 +27,7 @@ public class CommandsInterpretor {
     }
 
     public boolean execute(String[] input, Data data) {
-        if(commandMap.containsKey(input[0])) {
+        if(commandMap.containsKey(input[0]) && commandMap.get(input[0]).valid(input)) {
             return commandMap.get(input[0]).execute(input,data);
         }
         else {
