@@ -27,8 +27,11 @@ public class CommandsInterpretor {
     }
 
     public boolean execute(String[] input, Data data) {
-        if(commandMap.containsKey(input[0]) && commandMap.get(input[0]).valid(input)) {
-            return commandMap.get(input[0]).execute(input,data);
+        if(commandMap.containsKey(input[0])) {
+            if(!commandMap.get(input[0]).valid(input))
+                out.println("INVALID PARAM");
+            else
+                return commandMap.get(input[0]).execute(input,data);
         }
         else {
             out.println(input[0] +" : Unknown Command");
