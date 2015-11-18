@@ -21,16 +21,24 @@ public class ClientMain {
 		            new InputStreamReader(echoSocket.getInputStream()));
 		    BufferedReader stdIn =
 		        new BufferedReader(
-		            new InputStreamReader(System.in));
+		            new InputStreamReader(System.in))
 		){
 			String userInput;
 			while ((userInput = stdIn.readLine()) != null) {
 			    out.println(userInput);
-			    System.out.println(in.readLine());
+				String response = in.readLine();
+			    System.out.println(response);
+				if(response.equals("EXITOK"))
+					break;
 			}
+
+			in.close();
+			stdIn.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+
 
 	}
 
