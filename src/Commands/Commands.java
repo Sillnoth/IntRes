@@ -3,12 +3,9 @@ package Commands;
 import java.io.PrintWriter;
 import Data.Data;
 
-/**
- * Created by rhoo on 17/11/15.
- */
+
 public abstract class Commands {
     protected PrintWriter out;
-    protected static int NUMARG;
 
     Commands(PrintWriter out) {
         this.out = out;
