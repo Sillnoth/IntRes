@@ -13,7 +13,7 @@ public class ExitCommand extends Commands {
     @Override
     public boolean execute(String[] input, Data data) {
         out.println("EXITOK");
-        return false;
+        return true;
     }
 
     @Override
