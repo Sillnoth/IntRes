@@ -14,7 +14,7 @@ public class Server {
 	public static void main(String[] args) {
 		int portNumber = Integer.parseInt(args[0]);
 		Data data = new Data();
-		
+
 		try (
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
 		    Socket clientSocket = serverSocket.accept();
@@ -22,7 +22,7 @@ public class Server {
 		        new PrintWriter(clientSocket.getOutputStream(), true);
 		    BufferedReader in = new BufferedReader(
 		        new InputStreamReader(clientSocket.getInputStream()));
-		) {			
+		) {
 			String inputLine;
 			CommandsInterpretor interpretor = new CommandsInterpretor(out);
 			boolean fin = true;
@@ -31,7 +31,7 @@ public class Server {
 				fin = interpretor.execute(input,data);
             }
             System.out.println("CONNECTION CLOSED");
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
