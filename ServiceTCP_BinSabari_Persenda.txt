@@ -1,6 +1,12 @@
 Description du protocole d'application
 
 Le port utilisé sera 1337
+Pour communiquer avec le serveur nous utiliserons des String
+Le client n'a pas de classe a implementer
+
+Le serveur envoie les données au client avec un PrintWriter
+Le serveur lit les données a partir d'un InputStreamReader
+
 
 1) Deconnexion du serveur 
 
