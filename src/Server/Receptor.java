@@ -18,7 +18,6 @@ public class Receptor {
     public void run() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             while(true) {
-                System.out.println("test");
                 final Socket client = serverSocket.accept();
                 new Thread() {
                     public void run() {
