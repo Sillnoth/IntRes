@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Data {
-    volatile private List<String> nameList = new ArrayList<>();
-    volatile private List<String> surnameList = new ArrayList<>();
-    volatile private Map<String,List<String>> surnameLink = new HashMap<>();
+    private volatile List<String> nameList = new ArrayList<>();
+    private volatile List<String> surnameList = new ArrayList<>();
+    private volatile Map<String,List<String>> surnameLink = new HashMap<>();
 
     public void removeSurname(String surname) {
         surnameList.remove(surname);

@@ -1,12 +1,12 @@
-package Commands;
+package commands;
 
 import java.io.PrintWriter;
-import Data.Data;
+import data.Data;
 
 
 public class EchoSCommand extends Commands {
 
-    private final static int NUMARG = 2;
+    private static final int NUMARG = 2;
     public EchoSCommand(PrintWriter out) {
         super(out);
     }

@@ -1,12 +1,12 @@
-package Commands;
+package commands;
 
 import java.io.PrintWriter;
-import Data.Data;
+import data.Data;
 
 
 public class EditNCommand extends Commands {
 
-    private final static int NUMARG = 3;
+    private static final int NUMARG = 3;
     public EditNCommand(PrintWriter out) {
         super(out);
     }

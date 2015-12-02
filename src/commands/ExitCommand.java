@@ -1,11 +1,11 @@
-package Commands;
+package commands;
 
 import java.io.PrintWriter;
-import Data.Data;
+import data.Data;
 
 public class ExitCommand extends Commands {
 
-    private final static int NUMARG = 1;
+    private static final int NUMARG = 1;
     public ExitCommand(PrintWriter out) {
         super(out);
     }

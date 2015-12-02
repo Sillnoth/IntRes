@@ -1,8 +1,8 @@
-package Commands;
+package commands;
 
 import java.io.PrintWriter;
 
-import Data.Data;
+import data.Data;
 
 
 public abstract class Commands {

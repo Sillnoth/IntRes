@@ -1,8 +1,8 @@
-package Server;
+package server;
 
 import java.net.Socket;
 import java.net.*;
-import Data.Data;
+import data.Data;
 
 public class Receptor {
 

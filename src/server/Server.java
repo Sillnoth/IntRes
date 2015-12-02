@@ -1,12 +1,11 @@
-package Server;
+package server;
 
 
-import Data.Data;
+import data.Data;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
@@ -36,7 +35,7 @@ public class Server {
 					fin = interpretor.execute(input, data);
 				}
 				client.close();
-				System.out.println("Client: " + Thread.currentThread().getId() + " CONNECTION CLOSED");
+				System.out.println("client: " + Thread.currentThread().getId() + " CONNECTION CLOSED");
 
 			} catch (IOException e) {
 				e.printStackTrace();

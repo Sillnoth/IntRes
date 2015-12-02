@@ -1,11 +1,11 @@
-package Server;
+package server;
 
-import Commands.ExitCommand;
+import commands.ExitCommand;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
-import Commands.*;
-import Data.Data;
+import commands.*;
+import data.Data;
 
 import java.util.Map;
 
