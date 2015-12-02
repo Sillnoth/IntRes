@@ -10,22 +10,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-	
-	public static void main(String[] args) {
-		int portNumber = Integer.parseInt(args[0]);
-		Data data = new Data();
-		ServerSocket serverSocket = null;
-		try {serverSocket = new ServerSocket(portNumber);}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		while(true) {
+
+	private Data data;
+	private Socket client;
+
+	Server(Socket client, Data data) {
+		this.data = data;
+		this.client = client;
+		start();
+	}
+
+	public void start() {
 			try (
-					Socket clientSocket = serverSocket.accept();
 					PrintWriter out =
-							new PrintWriter(clientSocket.getOutputStream(), true);
+							new PrintWriter(client.getOutputStream(), true);
 					BufferedReader in = new BufferedReader(
-							new InputStreamReader(clientSocket.getInputStream()));
+							new InputStreamReader(client.getInputStream()));
 			)
 			{
 				String inputLine;
@@ -35,12 +35,12 @@ public class Server {
 					String[] input = inputLine.split(";");
 					fin = interpretor.execute(input, data);
 				}
-				System.out.println("CONNECTION CLOSED");
+				client.close();
+				System.out.println("Client: " + Thread.currentThread().getId() + " CONNECTION CLOSED");
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
 	}
 	
 }

@@ -35,7 +35,7 @@ public class CommandsInterpretor {
             }
         }
         else {
-            out.println(input[0] +" : Unknown Command");
+            out.println(input[0] +" : Unknown Command - Type HELP for information about commands");
         }
         return true;
     }
