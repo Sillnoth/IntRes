@@ -173,35 +173,30 @@ Le serveur lit les données a partir d'un InputStreamReader
  +-------------------+--------------+
  |	client       |    serveur   |
  +-------------------+--------------+
- | "REMOVES;Surnom\n" | "REMOVEOK\n" |
+ | "REMOVES;Surnom\n" | "REMOVEOK\n"|
  +-------------------+--------------+
 
  - s'il n'existe pas
  +-------------------+-----------------------+
  |	 client      |        serveur        |
  +-------------------+-----------------------+
- | "REMOVES;Surnom\n" | "SURNAME NOT FOUND\n" |
+ | "REMOVES;Surnom\n" | "SURNAME NOT FOUND\n"|
  +-------------------+-----------------------+
 
- 10) commande inconnue 
+ 10) Aide
+
+ +-------------------+--------------------------------+
+ |	 client      |              serveur           |
+ +-------------------+--------------------------------+
+ | "HELP\n"          | Renvoie la liste des commandes | 
+ +-------------------+--------------------------------+
+
+ 11) commande inconnue 
 
  +-------------------+---------------------------+
- |	 client    	  |        serveur        |
+ |	 client    	  |        serveur       |
  +-------------------+---------------------------+
  | "X COMMAND" | "X COMMAND : Unknown command\n" |
  +-------------------+---------------------------+
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
